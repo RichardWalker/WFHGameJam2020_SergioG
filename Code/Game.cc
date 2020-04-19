@@ -220,7 +220,7 @@ random()
 float
 fireSafe()
 {
-   return Game->gp.fireLevel / 2.5;
+   return Max(Game->gp.fireLevel / 2.5, 2);
 }
 
 float
@@ -934,6 +934,9 @@ gameTick()
                }
             }
 
+            float fireSpeed = 0.25;
+            gp->fireLevel -= fireSpeed * deltaTimeSec;
+
             if (gp->fireLevel <= 0.0) {
                gp->fireLevel = 0;
                killPlayer();
@@ -1022,7 +1025,7 @@ gameTick()
 
       }  // Play tick
 
-      vec3 cc = flameColor().xyz * (gp->fireLevel - 10.0) / (100 - 10.0);
+      vec3 cc = flameColor().xyz * Max(gp->fireLevel - 10.0, 0) / (100 - 10.0);
       gpuSetClearColor(cc.x, cc.y, cc.z);
 
       vec3 dudeUp = { 0, 1, 0 };

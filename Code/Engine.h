@@ -1,7 +1,7 @@
 #pragma once
 
 // Set the build mode for the engine.
-#define BuildModeInternal InternalEngineDebug
+#define BuildModeInternal InternalEngineRelease
 
 // BuildMode flag
 //    Available flags:
