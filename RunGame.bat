@@ -1,0 +1,1 @@
+build\game -g -f
